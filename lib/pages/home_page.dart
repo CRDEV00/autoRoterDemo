@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:demo/cubit/authentication_cubit.dart';
 import 'package:demo/router/auto_route.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,14 +12,30 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Center(child: Text('Home')),
           ElevatedButton(
               onPressed: () {
                 AutoRouter.of(context).push(const HomeDetailsRoute());
-                // context.pushRoute(const HomeDetailsRoute());
               },
               child: const Text('to go home details')),
+          ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context).pushNamed('homeDetails');
+              },
+              child: const Text('to go home details (named)')),
+          ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context)
+                    .pushNamed('profile/profileSettings', includePrefixMatches: true);
+              },
+              child: const Text('to go profile details')),
+          ElevatedButton(
+              onPressed: () {
+                BlocProvider.of<AuthenticationCubit>(context).logout();
+              },
+              child: const Text('log out')),
         ],
       ),
     );
