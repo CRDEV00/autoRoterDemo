@@ -20,25 +20,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<AuthenticationCubit>(
       create: (context) => _authCubit,
-      child: BlocBuilder<AuthenticationCubit, AuthenticationState>(
-        builder: (context, state) {
-          return const App();
-        },
+      child: MaterialApp.router(
+        title: 'Demo',
+        routerDelegate: _appRouter.delegate(navigatorObservers: () => []),
+        routeInformationParser: _appRouter.defaultRouteParser(),
       ),
-    );
-  }
-}
-
-class App extends StatelessWidget {
-
-  const App({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Demo',
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }

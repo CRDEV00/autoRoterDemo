@@ -13,7 +13,7 @@ class ProfilePage extends StatelessWidget {
           const Center(child: Text('Profile page')),
           ElevatedButton(
               onPressed: () {
-                AutoRouter.of(context).pushNamed('profileSettings', includePrefixMatches: true);
+                AutoRouter.of(context).pushNamed('profileSettings');
               },
               child: const Text('to go profile details')),
         ],
