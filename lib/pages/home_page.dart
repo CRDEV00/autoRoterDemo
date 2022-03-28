@@ -28,12 +28,13 @@ class HomePage extends StatelessWidget {
           ElevatedButton(
               onPressed: () {
                 AutoRouter.of(context)
-                    .pushNamed('profile/profileSettings', includePrefixMatches: true);
+                    .navigateNamed('profile/profileSettings', includePrefixMatches: true);
               },
               child: const Text('to go profile details')),
           ElevatedButton(
               onPressed: () {
                 BlocProvider.of<AuthenticationCubit>(context).logout();
+                context.router.navigate(Login());
               },
               child: const Text('log out')),
         ],

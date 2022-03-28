@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -7,7 +8,16 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(child: Text('Profile page')),
+      body: Column(
+        children: [
+          const Center(child: Text('Profile page')),
+          ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context).pushNamed('profileSettings', includePrefixMatches: true);
+              },
+              child: const Text('to go profile details')),
+        ],
+      ),
     );
   }
 }

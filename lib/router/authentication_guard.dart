@@ -9,11 +9,20 @@ class CheckIfAuthenticated extends AutoRouteGuard {
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) async {
-    final authenticated = authenticationCubit.state.isAuthenticated;
-    if (authenticated) {
+    final isAuthenticated = authenticationCubit.state.isAuthenticated;
+    final redirectTo = router.navigationHistory.urlState.url;
+    if (isAuthenticated) {
+      print('is authenticated: $isAuthenticated');
       resolver.next(true);
     } else {
-      router.push(Login());
+      print('is NOT authenticated: $isAuthenticated, ${router.current.queryParams}');
+      if (router.current.queryParams.isEmpty && redirectTo != 'login') {
+        router.navigate(Login(redirectTo: redirectTo));
+      }
     }
+    /* authenticationCubit.stream.listen((event) {
+      print(' new event ${event.isAuthenticated}');
+    
+    });*/
   }
 }
