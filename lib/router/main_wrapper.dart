@@ -31,3 +31,15 @@ class MainWrapper extends StatelessWidget {
     );
   }
 }
+
+ /* context.navigateTo(
+        const Health(),
+        onFailure: (failure) {
+          print(failure);
+        },
+      ).then((value) {
+        Future.delayed(const Duration(milliseconds: 10), () {
+          AutoRouter.of(context)
+              .push(HealthItemDetailRoute(id: 1008, type: FeatureModuleConfigType.SuperBill.index));
+        });
+      }); */

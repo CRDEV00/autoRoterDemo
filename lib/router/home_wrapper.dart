@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:demo/router/auto_route.gr.dart';
 import 'package:flutter/material.dart';
 
 class HomeWrapper extends StatelessWidget {

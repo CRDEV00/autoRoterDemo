@@ -20,9 +20,5 @@ class CheckIfAuthenticated extends AutoRouteGuard {
         router.navigate(Login(redirectTo: redirectTo));
       }
     }
-    /* authenticationCubit.stream.listen((event) {
-      print(' new event ${event.isAuthenticated}');
-    
-    });*/
   }
 }

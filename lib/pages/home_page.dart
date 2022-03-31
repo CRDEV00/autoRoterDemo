@@ -27,6 +27,7 @@ class HomePage extends StatelessWidget {
               child: const Text('to go home details (named)')),
           ElevatedButton(
               onPressed: () {
+                print(AutoRouter.of(context).stack);
                 AutoRouter.of(context)
                     .navigateNamed('profile/profileSettings', includePrefixMatches: true);
               },
